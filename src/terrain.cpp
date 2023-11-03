@@ -72,23 +72,13 @@ glm::vec2 generate_random_point(int min, int max) {
 }
 
 
-Terrain::Terrain(int size):size(size) {
+Terrain::Terrain(int rows, int cols):rows(rows), cols(cols) {
+    // terrain use nps coordinate system where 0,0 is left bottom,
+    // 1,1 is right top
     m_shader = new Shader("../shaders/triangle.vs", "../shaders/triangle.fs");
 
-
-    for(int z = 0; z < size; z += 1) {
-        std::vector<Vertex> row;
-
-        for(int x = 0; x < size; x += 1)  {
-            Vertex vertex = Vertex(x, 0.0f, z);
-            row.push_back(vertex);
-        }
-
-        vertices.push_back(row);
-    }
-
-    std::cout << "Vertices size " << vertices.size() << "\n";
-
+    for(int i = 0; i < (rows * cols); i += 1)
+        vertices.push_back(Vertex());
 
 
 }
@@ -98,43 +88,41 @@ Terrain::~Terrain() {
 }
 
 void Terrain::init_mesh() {
-    std::vector<float> vertices_list;
 
-    for(int z = 0; z < size; z += 1) {
-        for(int x = 0; x < size; x += 1)  {
-            Vertex vertex = vertices[z][x];
+    float x = 0.0f;
+    float z = 0.0f;
 
 
-            vertices_list.push_back(vertex.pos_x);
-            vertices_list.push_back(vertex.pos_y);
-            vertices_list.push_back(vertex.pos_z);
+    /*
+    vertices[0] = Vertex(x, z,  0.0f);
+    vertices[1] = Vertex(x + 1.0f, z,  0.0f);
+    vertices[2] = Vertex(x + 1, z + 1,  0.0f);
+    */
+
+
+    for(int col = 0; col < cols; col += 1) {
+        for(int row = 0; row < rows; row += 1) {
+            Vertex vertex = Vertex((float)col / cols, (float)row / rows, 0.0f);
+            set_vertex(row, col, vertex);
 
         }
-
     }
 
-    for(int i = 0; i < 100; i += 1)  {
-        std::cout << vertices_list[i] << " ";
-
-        if((i + 1) % 3 == 0 )
-            std::cout << "\n";
-
-    }
 
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, vertices_list.size() * sizeof(float), &vertices_list[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), &vertices[0], GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
-
 }
 
 void Terrain::render() {
+    m_shader->use();
 
     glm::mat4 projection = Camera::get_instance()->projection;
     glm::mat4 view = Camera::get_instance()->get_view_matrix();
@@ -145,7 +133,17 @@ void Terrain::render() {
     m_shader->setMat4("projection", projection);
     m_shader->setMat4("view", view);
     m_shader->setMat4("model", position);
-    glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLES, 0, size * size);
 
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, vertices.size() / 3);
+
+}
+
+void Terrain::set_vertex(int row, int  col, Vertex vertex) {
+    vertices[(col * cols) + row] = vertex;
+
+}
+
+Vertex Terrain::get_vertex(int row, int col) {
+    return vertices[(col * cols) + row];
 }

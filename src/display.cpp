@@ -34,7 +34,7 @@ const int width , const int height ):m_close(false)   {
     last_frame = 0.0f;
     delta_time = 0.0f;
 
-    terrain = new Terrain(100);
+    terrain = new Terrain(5, 5);
     terrain->init_mesh();
 
     /*
@@ -104,7 +104,7 @@ void Display::render() {
     glClearColor(0.2f , 0.3f , 0.3f , 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    //terrain->render();
+    terrain->render();
 
 }
 
