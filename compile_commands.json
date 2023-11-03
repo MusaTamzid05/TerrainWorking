@@ -1,32 +1,42 @@
 [
 {
-  "directory": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/build",
-  "command": "/usr/bin/c++ -Dmusa_gl_libs_EXPORTS -I/home/musa/c++_pro/opengl_pro/basic_opengl_started/include -O2 -g -DNDEBUG -fPIC -std=c++11 -o CMakeFiles/musa_gl_libs.dir/src/glad.cpp.o -c /home/musa/c++_pro/opengl_pro/basic_opengl_started/src/glad.cpp",
-  "file": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/src/glad.cpp"
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++ -Dmusa_gl_libs_EXPORTS -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -fPIC -std=c++11 -o CMakeFiles/musa_gl_libs.dir/src/glad.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/glad.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/glad.cpp"
 },
 {
-  "directory": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/build",
-  "command": "/usr/bin/c++ -Dmusa_gl_libs_EXPORTS -I/home/musa/c++_pro/opengl_pro/basic_opengl_started/include -O2 -g -DNDEBUG -fPIC -std=c++11 -o CMakeFiles/musa_gl_libs.dir/src/shader.cpp.o -c /home/musa/c++_pro/opengl_pro/basic_opengl_started/src/shader.cpp",
-  "file": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/src/shader.cpp"
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++ -Dmusa_gl_libs_EXPORTS -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -fPIC -std=c++11 -o CMakeFiles/musa_gl_libs.dir/src/shader.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/shader.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/shader.cpp"
 },
 {
-  "directory": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/build",
-  "command": "/usr/bin/c++ -Dmusa_gl_libs_EXPORTS -I/home/musa/c++_pro/opengl_pro/basic_opengl_started/include -O2 -g -DNDEBUG -fPIC -std=c++11 -o CMakeFiles/musa_gl_libs.dir/src/stb_image.cpp.o -c /home/musa/c++_pro/opengl_pro/basic_opengl_started/src/stb_image.cpp",
-  "file": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/src/stb_image.cpp"
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++ -Dmusa_gl_libs_EXPORTS -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -fPIC -std=c++11 -o CMakeFiles/musa_gl_libs.dir/src/stb_image.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/stb_image.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/stb_image.cpp"
 },
 {
-  "directory": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/build",
-  "command": "/usr/bin/c++  -I/home/musa/c++_pro/opengl_pro/basic_opengl_started/include -O2 -g -DNDEBUG -o CMakeFiles/gl_play.dir/src/main.cpp.o -c /home/musa/c++_pro/opengl_pro/basic_opengl_started/src/main.cpp",
-  "file": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/src/main.cpp"
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -o CMakeFiles/terrain.dir/src/main.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/main.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/main.cpp"
 },
 {
-  "directory": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/build",
-  "command": "/usr/bin/c++  -I/home/musa/c++_pro/opengl_pro/basic_opengl_started/include -O2 -g -DNDEBUG -o CMakeFiles/gl_play.dir/src/util.cpp.o -c /home/musa/c++_pro/opengl_pro/basic_opengl_started/src/util.cpp",
-  "file": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/src/util.cpp"
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -o CMakeFiles/terrain.dir/src/util.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/util.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/util.cpp"
 },
 {
-  "directory": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/build",
-  "command": "/usr/bin/c++  -I/home/musa/c++_pro/opengl_pro/basic_opengl_started/include -O2 -g -DNDEBUG -o CMakeFiles/gl_play.dir/src/display.cpp.o -c /home/musa/c++_pro/opengl_pro/basic_opengl_started/src/display.cpp",
-  "file": "/home/musa/c++_pro/opengl_pro/basic_opengl_started/src/display.cpp"
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -o CMakeFiles/terrain.dir/src/display.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/display.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/display.cpp"
+},
+{
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -o CMakeFiles/terrain.dir/src/triangle.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/triangle.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/triangle.cpp"
+},
+{
+  "directory": "/home/musa/c++_pro/recording/tarren_working/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/recording/tarren_working/include -O2 -g -DNDEBUG -o CMakeFiles/terrain.dir/src/camera.cpp.o -c /home/musa/c++_pro/recording/tarren_working/src/camera.cpp",
+  "file": "/home/musa/c++_pro/recording/tarren_working/src/camera.cpp"
 }
 ]

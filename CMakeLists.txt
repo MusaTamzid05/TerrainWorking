@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
-project(gl_play)
+project(terrain)
 
 
 set(LIB_HEADER_FILES
@@ -48,9 +48,10 @@ set(SOURCE_FILES
     src/display.cpp
     src/triangle.cpp
     src/camera.cpp
+    src/terrain.cpp
     )
 
-add_executable(gl_play  ${SOURCE_FILES})
+add_executable(terrain  ${SOURCE_FILES})
 
 
 
@@ -59,4 +60,4 @@ include_directories( ${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS} ${GLEW_INCLUDE
     )
 
 
-target_link_libraries(gl_play  musa_gl_libs)
+target_link_libraries(terrain  musa_gl_libs)

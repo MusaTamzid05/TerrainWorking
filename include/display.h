@@ -5,10 +5,8 @@
 #include "gl_headers.h"
 
 #include <glm/glm.hpp>
-#include "triangle.h"
 
-
-
+struct Terrain;
 
 class Display {
 
@@ -43,7 +41,8 @@ class Display {
         float delta_time;
         float last_frame;
 
-        Triangle* triangle;
+        Terrain* terrain;
+
 
 
 

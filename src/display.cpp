@@ -1,5 +1,6 @@
 #include "display.h"
 #include "camera.h"
+#include "terrain.h"
 #include <iostream>
 
 
@@ -33,7 +34,23 @@ const int width , const int height ):m_close(false)   {
     last_frame = 0.0f;
     delta_time = 0.0f;
 
-    triangle = new Triangle();
+    terrain = new Terrain(100);
+    terrain->init_mesh();
+
+    /*
+    std::vector<float> vertices = generate_terrain(100, 50);
+    vertices = normalize(vertices);
+
+    for(int i = 0; i < 100; i += 1 ) {
+        std::cout <<  vertices[i] << " ";
+
+        if(((i + 1) % 3) == 0)
+            std::cout << "\n";
+
+    }
+    */
+
+    //Terrain terrain(100);
 
 
 
@@ -87,7 +104,7 @@ void Display::render() {
     glClearColor(0.2f , 0.3f , 0.3f , 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    triangle->render();
+    //terrain->render();
 
 }
 
