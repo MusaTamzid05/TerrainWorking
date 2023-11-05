@@ -19,6 +19,14 @@ struct Terrain {
     Terrain(int size);
     virtual ~Terrain();
 
+
+    virtual void init_height() {}
+    void set_vertex(int col, int row, const Vertex& vertex);
+    Vertex get_vertex(int col, int row) const;
+
+
+
+
     void render();
 
     Shader* m_shader;

@@ -51,6 +51,7 @@ Terrain::Terrain(int size):rows(size), cols(size) {
 
 
 
+
     glGenVertexArrays(1, &VAO);
 
     glGenBuffers(1, &VBO);
@@ -77,6 +78,17 @@ Terrain::Terrain(int size):rows(size), cols(size) {
 Terrain::~Terrain() {
 
 }
+
+void Terrain::set_vertex(int col, int row, const Vertex& vertex) {
+    vertices[(row * rows) + col] = vertex;
+
+
+}
+
+Vertex Terrain::get_vertex(int col, int row) const {
+    return vertices[(row * rows) + col];
+}
+
 
 
 void Terrain::render() {
