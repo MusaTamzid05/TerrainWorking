@@ -49,6 +49,7 @@ set(SOURCE_FILES
     src/triangle.cpp
     src/camera.cpp
     src/terrain.cpp
+    src/utils.cpp
     )
 
 add_executable(terrain  ${SOURCE_FILES})

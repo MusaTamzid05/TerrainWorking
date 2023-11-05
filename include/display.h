@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 
 struct Terrain;
+struct Triangle;
 
 class Display {
 

@@ -1,6 +1,7 @@
 #include "display.h"
 #include "camera.h"
 #include "terrain.h"
+#include "triangle.h"
 #include <iostream>
 
 
@@ -34,8 +35,7 @@ const int width , const int height ):m_close(false)   {
     last_frame = 0.0f;
     delta_time = 0.0f;
 
-    terrain = new Terrain(5, 5);
-    terrain->init_mesh();
+    terrain = new Terrain(120);
 
     /*
     std::vector<float> vertices = generate_terrain(100, 50);
