@@ -40,6 +40,15 @@ Terrain::Terrain(int size):rows(size), cols(size) {
         }
     }
 
+    for(int i = 0; i < vertices.size() - (rows + 2); i +=1) {
+        glm::uvec3 top_triangle = glm::uvec3(i, i + 1, i + rows);
+        glm::uvec3 bottom_triangle = glm::uvec3(i + 1, i + rows, i + rows + 1);
+
+        triangle_indices.push_back(top_triangle);
+        triangle_indices.push_back(bottom_triangle);
+
+    }
+
 
 
     glGenVertexArrays(1, &VAO);
@@ -53,22 +62,14 @@ Terrain::Terrain(int size):rows(size), cols(size) {
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
     glEnableVertexAttribArray(0);
 
-    /*
 
     glGenBuffers(1, &EBO);
 
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned), &indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, triangle_indices.size() * sizeof(glm::uvec3), triangle_indices.data(), GL_STATIC_DRAW);
 
 
-    for(int i = 0; i < vertices.size(); i += 1) {
-        std::cout << vertices[i] << " ";
-
-        if((i + 1) % 3 == 0)\
-            std::cout << "\n";
-    }
-    */
     
 
     for(int i = 0; i < 30; i += 1) {
@@ -94,6 +95,7 @@ void Terrain::render() {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f));
     model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
+    //model = glm::scale(model, glm::vec3(5.0, 5.0, 5.0));
 
 
     m_shader->setMat4("projection", projection);
@@ -101,7 +103,9 @@ void Terrain::render() {
     m_shader->setMat4("model", model);
 
     glBindVertexArray(VAO);
-    glDrawArrays(GL_POINTS, 0, vertices.size() * 3);
+    //glDrawArrays(GL_POINTS, 0, vertices.size());
+    //glDrawElements(GL_POINTS, triangle_indices.size() * 3, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, triangle_indices.size() * 3, GL_UNSIGNED_INT, 0);
 
 
 }

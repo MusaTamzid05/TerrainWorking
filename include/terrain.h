@@ -25,6 +25,7 @@ struct Terrain {
     
 
     std::vector<Vertex> vertices;
+    std::vector<glm::uvec3> triangle_indices;
 
     int rows;
     int cols;
