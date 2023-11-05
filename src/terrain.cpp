@@ -70,14 +70,6 @@ Terrain::Terrain(int size):rows(size), cols(size) {
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, triangle_indices.size() * sizeof(glm::uvec3), triangle_indices.data(), GL_STATIC_DRAW);
 
 
-    
-
-    for(int i = 0; i < 30; i += 1) {
-        Vertex vertex = vertices[i];
-        std::cout << vertex.position.x << " " << vertex.position.y << " " << vertex.position.z <<  "\n";
-
-    }
-
 
 
 }
@@ -93,8 +85,8 @@ void Terrain::render() {
     glm::mat4 projection = Camera::get_instance()->projection;
     glm::mat4 view = Camera::get_instance()->get_view_matrix();
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f));
-    model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
+    model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
+    //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
     //model = glm::scale(model, glm::vec3(5.0, 5.0, 5.0));
 
 
