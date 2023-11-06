@@ -16,8 +16,11 @@ struct Vertex {
 
 struct Terrain {
 
-    Terrain(int size);
+    Terrain(int size=-1);
     virtual ~Terrain();
+
+    void init_x_z();
+    void init_mesh();
 
 
     virtual void init_height() {}

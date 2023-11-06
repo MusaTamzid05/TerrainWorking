@@ -11,7 +11,25 @@
 
 Terrain::Terrain(int size):rows(size), cols(size) {
     m_shader = new Shader("../shaders/triangle.vs", "../shaders/triangle.fs");
+
+    if(size == -1)
+        return;
+
+    init_x_z();
+    init_mesh();
+
+
+
+}
+
+Terrain::~Terrain() {
+
+}
+
+
+void Terrain::init_x_z() {
     vertices.resize(rows * cols);
+    int size = rows; // row and col are same so it does not matter
 
     int vertex_index = 0;
 
@@ -52,6 +70,10 @@ Terrain::Terrain(int size):rows(size), cols(size) {
 
 
 
+
+}
+
+void Terrain::init_mesh() {
     glGenVertexArrays(1, &VAO);
 
     glGenBuffers(1, &VBO);
@@ -70,12 +92,6 @@ Terrain::Terrain(int size):rows(size), cols(size) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, triangle_indices.size() * sizeof(glm::uvec3), triangle_indices.data(), GL_STATIC_DRAW);
 
-
-
-
-}
-
-Terrain::~Terrain() {
 
 }
 
