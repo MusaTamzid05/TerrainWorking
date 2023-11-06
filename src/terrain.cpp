@@ -59,14 +59,35 @@ void Terrain::init_x_z() {
         }
     }
 
-    for(int i = 0; i < vertices.size() - (rows + 2); i +=1) {
-        glm::uvec3 top_triangle = glm::uvec3(i, i + 1, i + rows);
-        glm::uvec3 bottom_triangle = glm::uvec3(i + 1, i + rows, i + rows + 1);
 
-        triangle_indices.push_back(top_triangle);
-        triangle_indices.push_back(bottom_triangle);
+    indices.resize((rows- 1) * (cols - 1) * 6 );
+    int index = 0;
+
+    for(int z = 0; z < rows; z += 1) {
+        for(int x = 0; x < cols; x += 1) {
+            unsigned int index_bottom_left = z * cols + x;
+            unsigned int index_top_left =  (z + 1) * cols + x;
+            unsigned int index_top_right =  (z + 1) * cols + x + 1;
+            unsigned int index_bottom_right =  z  * cols + x + 1;
+
+
+            // top left
+            indices[index++] = index_bottom_left;
+            indices[index++] = index_top_left;
+            indices[index++] = index_top_right;
+
+
+            // top right
+            indices[index++] = index_bottom_left;
+            indices[index++] = index_top_right;
+            indices[index++] = index_bottom_right;
+
+        }
 
     }
+
+
+
 
 
 
@@ -91,7 +112,7 @@ void Terrain::init_mesh() {
 
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, triangle_indices.size() * sizeof(glm::uvec3), triangle_indices.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int ), indices.data(), GL_STATIC_DRAW);
 
 
 }
@@ -126,7 +147,8 @@ void Terrain::render() {
     glBindVertexArray(VAO);
     //glDrawArrays(GL_POINTS, 0, vertices.size());
     //glDrawElements(GL_POINTS, triangle_indices.size() * 3, GL_UNSIGNED_INT, 0);
-    glDrawElements(GL_TRIANGLES, triangle_indices.size() * 3, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_POINTS, (rows - 1) * (cols -1) * 6, GL_UNSIGNED_INT, 0);
+    //glDrawElements(GL_TRIANGLES, (rows - 1) * (cols -1) * 6, GL_UNSIGNED_INT, 0);
 
 
 }

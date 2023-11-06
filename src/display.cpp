@@ -37,7 +37,7 @@ const int width , const int height ):m_close(false)   {
     glEnable(GL_DEPTH_TEST);
 
 
-    terrain = new TerrainHeightMap("./resize.png.txt");
+    terrain = new TerrainHeightMap("./heightmap.png.txt");
 
     /*
     std::vector<float> vertices = generate_terrain(100, 50);
