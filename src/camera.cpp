@@ -87,6 +87,12 @@ void Camera::process_keyboard(Camera_Movement direction , float delta_time) {
     if(direction == RIGHT)
         position += right * velocity;
 
+    if(direction == UP)
+        position += up * velocity;
+
+    if(direction == DOWN)
+        position -= up * velocity;
+
 }
 
 void Camera::process_mouse_movement(float xoffset , float yoffset , bool constrainPitch ) {

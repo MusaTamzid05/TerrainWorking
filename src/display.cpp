@@ -6,9 +6,11 @@
 
 
 
+bool Display::first_mouse_move = true;
+float Display::last_x = 0.0f;
+float Display::last_y = 0.0f;
 
-Display::Display(const std::string& window_name,
-const int width , const int height ):m_close(false)   {
+Display::Display(const std::string& window_name, const int width , const int height ):m_close(false)   {
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR , 3);
@@ -37,7 +39,9 @@ const int width , const int height ):m_close(false)   {
     glEnable(GL_DEPTH_TEST);
 
 
+
     terrain = new TerrainHeightMap("./heightmap.png.txt");
+    //terrain = new Terrain(1000);
 
     /*
     std::vector<float> vertices = generate_terrain(100, 50);
@@ -81,9 +85,9 @@ void Display::set_callbacks(bool capture_mouse) {
     glfwSetFramebufferSizeCallback(m_window , frambuffer_size_callback);
 
     if(capture_mouse)
-        glfwSetInputMode(m_window , GLFW_CURSOR , GLFW_CURSOR_NORMAL);
-    else
         glfwSetInputMode(m_window , GLFW_CURSOR , GLFW_CURSOR_DISABLED);
+    else
+        glfwSetInputMode(m_window , GLFW_CURSOR , GLFW_CURSOR_NORMAL);
 
     glfwSetScrollCallback(m_window , scroll_callback);
     glfwSetCursorPosCallback(m_window , mouse_callback);
@@ -123,6 +127,23 @@ void Display::frambuffer_size_callback(GLFWwindow* window , int width , int heig
 
 
 void Display::mouse_callback(GLFWwindow* window , double xpos , double ypos) {
+    float x_pos = static_cast<float>(xpos);
+    float y_pos = static_cast<float>(ypos);
+
+    if(first_mouse_move) {
+        last_x = xpos;
+        last_y = ypos;
+
+        first_mouse_move = false;
+    }
+
+    float xoffset = xpos - last_x;
+    float yoffset = last_y - ypos;
+
+    last_x = xpos;
+    last_y = ypos;
+
+    Camera::get_instance()->process_mouse_movement(xoffset, yoffset);
 }
 
 
@@ -147,6 +168,12 @@ void Display::process_input() {
 
     if(glfwGetKey(m_window, GLFW_KEY_D) == GLFW_PRESS)
         Camera::get_instance()->process_keyboard(Camera::Camera_Movement::RIGHT, delta_time);
+
+    if(glfwGetKey(m_window, GLFW_KEY_UP) == GLFW_PRESS)
+        Camera::get_instance()->process_keyboard(Camera::Camera_Movement::UP, delta_time);
+
+    if(glfwGetKey(m_window, GLFW_KEY_DOWN) == GLFW_PRESS)
+        Camera::get_instance()->process_keyboard(Camera::Camera_Movement::DOWN, delta_time);
 
 
 }

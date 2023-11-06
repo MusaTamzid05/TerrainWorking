@@ -43,7 +43,11 @@ class Display {
         float delta_time;
         float last_frame;
 
-        TerrainHeightMap* terrain;
+        Terrain* terrain;
+
+        static bool first_mouse_move;
+        static float last_x;
+        static float last_y;
 
 
 

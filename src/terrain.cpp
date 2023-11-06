@@ -60,6 +60,7 @@ void Terrain::init_x_z() {
     }
 
 
+
     indices.resize((rows- 1) * (cols - 1) * 6 );
     int index = 0;
 

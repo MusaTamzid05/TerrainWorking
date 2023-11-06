@@ -21,7 +21,10 @@ class Camera {
             FORWARD,
             BACKWARD,
             LEFT,
-            RIGHT
+            RIGHT,
+            UP,
+            DOWN,
+
         };
 
         glm::vec3 position;
