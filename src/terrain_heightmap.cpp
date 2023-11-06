@@ -21,7 +21,7 @@ TerrainHeightMap::TerrainHeightMap(const std::string& path):Terrain(){
     init_x_z();
     std::cout << rows << " " << cols << "\n";
 
-    LinearInterpolator interpolator(0.0f, 255, -1.0f, 1.0f);
+    LinearInterpolator interpolator(0.0f, 255, 0.0f, 0.75f);
 
     int row = 0;
 

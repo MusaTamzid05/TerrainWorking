@@ -33,7 +33,8 @@ void Terrain::init_x_z() {
 
     int vertex_index = 0;
 
-    LinearInterpolator interpolator(0.0f, size, -1.0f, 1.0f);
+    LinearInterpolator interpolator_row(0.0f, rows, -1.0f, 1.0f);
+    LinearInterpolator interpolator_col(0.0f, cols, -1.0f, 1.0f);
 
     for(int row = 0; row < rows; row += 1) {
         for(int col = 0; col < cols; col += 1) {
@@ -45,8 +46,8 @@ void Terrain::init_x_z() {
 
 
 
-            x = interpolator.map(x);
-            z = interpolator.map(z);
+            x = interpolator_col.map(x);
+            z = interpolator_row.map(z);
 
 
             glm::vec3 position = glm::vec3(x, 0.0f, z);
