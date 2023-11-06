@@ -35,7 +35,7 @@ const int width , const int height ):m_close(false)   {
     last_frame = 0.0f;
     delta_time = 0.0f;
 
-    terrain = new Terrain(120);
+    terrain = new TerrainHeightMap("./heightmap.png.txt");
 
     /*
     std::vector<float> vertices = generate_terrain(100, 50);

@@ -3,6 +3,7 @@
 
 #include <string>
 #include "gl_headers.h"
+#include "terrain_heightmap.h"
 
 #include <glm/glm.hpp>
 
@@ -42,7 +43,7 @@ class Display {
         float delta_time;
         float last_frame;
 
-        Terrain* terrain;
+        TerrainHeightMap* terrain;
 
 
 

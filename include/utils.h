@@ -1,6 +1,9 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include <vector>
+#include <string>
+
 struct LinearInterpolator {
     LinearInterpolator(float min, float max, float output_min, float output_max);
 
@@ -12,8 +15,8 @@ struct LinearInterpolator {
     float x2;
     float y2;
 
-
-
 };
+
+std::vector<std::string> split(const std::string& line, char splitter);
 
 #endif

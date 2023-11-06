@@ -23,7 +23,6 @@ struct Terrain {
     void init_mesh();
 
 
-    virtual void init_height() {}
     void set_vertex(int col, int row, const Vertex& vertex);
     Vertex get_vertex(int col, int row) const;
 

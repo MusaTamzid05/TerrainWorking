@@ -10,7 +10,7 @@
 
 
 Terrain::Terrain(int size):rows(size), cols(size) {
-    m_shader = new Shader("../shaders/triangle.vs", "../shaders/triangle.fs");
+    m_shader = new Shader("../shaders/terrain.vs", "../shaders/terrain.fs");
 
     if(size == -1)
         return;

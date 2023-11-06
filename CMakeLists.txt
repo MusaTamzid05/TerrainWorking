@@ -44,11 +44,11 @@ find_package(GLEW REQUIRED)
 
 set(SOURCE_FILES
     src/main.cpp
-    src/util.cpp
     src/display.cpp
     src/triangle.cpp
     src/camera.cpp
     src/terrain.cpp
+    src/terrain_heightmap.cpp
     src/utils.cpp
     )
 

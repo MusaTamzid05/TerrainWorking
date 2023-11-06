@@ -17,3 +17,22 @@ float LinearInterpolator::map(float value) {
     return y1 + (a * b);
 
 }
+
+std::vector<std::string> split(const std::string& line, char splitter) {
+    std::vector<std::string> results;
+    std::string temp = "";
+
+    for(char ch : line) {
+        if(ch == ' ') {
+            results.push_back(temp);
+            temp = "";
+            continue;
+        }
+
+        temp += ch;
+
+    }
+
+    results.push_back(temp);
+    return results;
+}
