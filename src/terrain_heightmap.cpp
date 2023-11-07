@@ -34,6 +34,7 @@ TerrainHeightMap::TerrainHeightMap(const std::string& path):Terrain(){
             Vertex vertex = get_vertex(col, row);;
             int y = stoi(data[col]);
             vertex.position.y = interpolator.map(y);
+            //vertex.position.y = std::stof(data[col]);
             set_vertex(col, row, vertex);
 
         }
@@ -45,11 +46,6 @@ TerrainHeightMap::TerrainHeightMap(const std::string& path):Terrain(){
 
         row += 1;
     }
-
-
-
-
-
 
     init_mesh();
 }

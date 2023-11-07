@@ -40,7 +40,7 @@ Display::Display(const std::string& window_name, const int width , const int hei
 
 
 
-    terrain = new TerrainHeightMap("./heightmap.png.txt");
+    terrain = new TerrainHeightMap("./resize.png.txt");
     //terrain = new Terrain(1000);
 
     /*

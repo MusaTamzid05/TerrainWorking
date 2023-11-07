@@ -64,8 +64,8 @@ void Terrain::init_x_z() {
     indices.resize((rows- 1) * (cols - 1) * 6 );
     int index = 0;
 
-    for(int z = 0; z < rows; z += 1) {
-        for(int x = 0; x < cols; x += 1) {
+    for(int z = 0; z < rows - 1; z += 1) {
+        for(int x = 0; x < cols - 1; x += 1) {
             unsigned int index_bottom_left = z * cols + x;
             unsigned int index_top_left =  (z + 1) * cols + x;
             unsigned int index_top_right =  (z + 1) * cols + x + 1;
@@ -119,13 +119,13 @@ void Terrain::init_mesh() {
 }
 
 void Terrain::set_vertex(int col, int row, const Vertex& vertex) {
-    vertices[(row * rows) + col] = vertex;
+    vertices[(row * cols) + col] = vertex;
 
 
 }
 
 Vertex Terrain::get_vertex(int col, int row) const {
-    return vertices[(row * rows) + col];
+    return vertices[(row * cols) + col];
 }
 
 
@@ -148,8 +148,8 @@ void Terrain::render() {
     glBindVertexArray(VAO);
     //glDrawArrays(GL_POINTS, 0, vertices.size());
     //glDrawElements(GL_POINTS, triangle_indices.size() * 3, GL_UNSIGNED_INT, 0);
-    glDrawElements(GL_POINTS, (rows - 1) * (cols -1) * 6, GL_UNSIGNED_INT, 0);
-    //glDrawElements(GL_TRIANGLES, (rows - 1) * (cols -1) * 6, GL_UNSIGNED_INT, 0);
+    //glDrawElements(GL_POINTS, (rows - 1) * (cols -1) * 6, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, (rows - 1) * (cols -1) * 6, GL_UNSIGNED_INT, 0);
 
 
 }
