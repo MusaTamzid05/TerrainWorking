@@ -3,51 +3,36 @@
 #include <fstream>
 #include <iostream>
 
+#define STB_IMAGE_IMPLEMENTATION_H
+#include "stb_image.h"
+
 TerrainHeightMap::TerrainHeightMap(const std::string& path):Terrain(){
+    int channels;
+    unsigned char* data = stbi_load(path.c_str(), &cols, &rows, &channels, 0);
 
-    std::ifstream input_file(path, std::ios::in);
-
-    if(!input_file.is_open()) {
-        std::cerr << "Failed to open " << path << "\n";
-        exit(1);
-    }
-
-    std::string line;
-    std::getline(input_file, line);
-    std::vector<std::string> info = split(line, ' ');
-
-    rows = stoi(info[0]);
-    cols = stoi(info[1]);
     init_x_z();
-    std::cout << rows << " " << cols << "\n";
 
-    LinearInterpolator interpolator(0.0f, 255, 0.0f, 0.75f);
+    float y_scale = 64.0f / 256.0f;
+    float y_shift = 16.0f;
 
-    int row = 0;
 
-    while(std::getline(input_file, line)) {
+    LinearInterpolator interpolator(0.0f, 255.0f, 0.0f, 0.1f);
 
-        std::getline(input_file, line);
-        std::vector<std::string> data = split(line, ' ');
 
-        for(int col = 0; col < cols; col += 1) {
-            Vertex vertex = get_vertex(col, row);;
-            int y = stoi(data[col]);
+    for(int z = 0; z < rows; z += 1) {
+        for(int x = 0; x < cols; x += 1) {
+            unsigned char* texel = data + (x + cols * z) * channels;
+            float y = (float)texel[0];
+            Vertex vertex = get_vertex(x, z);
             vertex.position.y = interpolator.map(y);
-            //vertex.position.y = std::stof(data[col]);
-            set_vertex(col, row, vertex);
+            set_vertex(x, z, vertex);
 
         }
 
-
-
-
-
-
-        row += 1;
     }
 
     init_mesh();
+
 }
 
 TerrainHeightMap::~TerrainHeightMap() {

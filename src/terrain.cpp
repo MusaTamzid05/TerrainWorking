@@ -52,12 +52,17 @@ void Terrain::init_x_z() {
 
             glm::vec3 position = glm::vec3(x, 0.0f, z);
 
+
             vertex.position = position;
 
             vertices[vertex_index] = vertex;
             vertex_index += 1;
         }
     }
+
+
+
+
 
 
 
@@ -138,7 +143,7 @@ void Terrain::render() {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, -0.5f, 0.0f));
     //model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0, 0.0, 0.0));
-    //model = glm::scale(model, glm::vec3(5.0, 5.0, 5.0));
+    model = glm::scale(model, glm::vec3(5.0, 5.0, 5.0));
 
 
     m_shader->setMat4("projection", projection);
