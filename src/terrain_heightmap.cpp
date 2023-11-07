@@ -12,8 +12,6 @@ TerrainHeightMap::TerrainHeightMap(const std::string& path):Terrain(){
 
     init_x_z();
 
-    float y_scale = 64.0f / 256.0f;
-    float y_shift = 16.0f;
 
 
     LinearInterpolator interpolator(0.0f, 255.0f, 0.0f, 0.1f);
