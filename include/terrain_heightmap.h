@@ -8,7 +8,6 @@ struct TerrainHeightMap : Terrain {
     TerrainHeightMap(const std::string& path);
     virtual ~TerrainHeightMap();
 
-    void init_height();
 
 
 

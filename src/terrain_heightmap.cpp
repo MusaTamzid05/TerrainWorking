@@ -37,7 +37,5 @@ TerrainHeightMap::~TerrainHeightMap() {
 
 }
 
-void TerrainHeightMap::init_height() {
-}
 
 
