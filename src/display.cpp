@@ -1,6 +1,7 @@
 #include "display.h"
 #include "camera.h"
 #include "terrain.h"
+#include "terrain_factorial_generation.h"
 #include "triangle.h"
 #include <iostream>
 
@@ -41,6 +42,7 @@ Display::Display(const std::string& window_name, const int width , const int hei
 
 
     terrain = new TerrainHeightMap("./heightmap.png");
+    terrain = new FactorialTerrainGeneration(2000 , 2000, 100, 0.0f, 255.0f);
     //terrain = new Terrain(1000);
 
     /*

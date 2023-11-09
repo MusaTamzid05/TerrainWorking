@@ -49,6 +49,7 @@ set(SOURCE_FILES
     src/camera.cpp
     src/terrain.cpp
     src/terrain_heightmap.cpp
+    src/terrain_factorial_generation.cpp
     src/utils.cpp
     )
 

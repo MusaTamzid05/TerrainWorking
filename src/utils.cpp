@@ -36,3 +36,14 @@ std::vector<std::string> split(const std::string& line, char splitter) {
     results.push_back(temp);
     return results;
 }
+
+
+float generate_random(float max) {
+    int result = rand() % (int)max;
+    return (float) result;
+}
+
+
+glm::vec3 generate_ramdom_point(int cols, int rows) {
+    return glm::vec3(rand() % cols, 0.0f,  rand() % rows);
+}
